@@ -1,0 +1,46 @@
+.nav__inner
+    font-family: 'Muller-Trial'
+    font-style: normal
+    font-weight: 500
+    font-size: 20px
+    line-height: 27px
+    color: #000
+    .nav__item
+        display: flex
+        align-items: center
+        background: #EAEAEA
+        border-radius: 30px
+        padding: 16px 12px
+        margin-bottom: 10px
+        transition: all 0.5s ease
+        &:hover
+            background: #DADADA
+            transition: all 0.5s ease
+
+@media (max-width: 1199.98px)
+    .nav__inner
+        .nav__item
+            padding: 10px 8px
+
+@media (max-width: 740.00px)
+    .nav__inner
+        .nav__item
+            justify-content: center
+            font-size: 20px
+            .nav__image
+                display: none
+
+@media (max-width: 575.98px)
+    .nav__inner
+        .nav__item
+            justify-content: center
+            font-size: 15px
+            .nav__image
+                display: none
+
+@media (max-width:440px)
+    .nav__inner
+        .nav__item
+            justify-content: center
+            font-size: 12px
+            padding: 0px 0px

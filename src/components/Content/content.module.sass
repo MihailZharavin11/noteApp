@@ -1,0 +1,19 @@
+.contentWrapper
+    display: flex
+    flex-direction: column
+    font-family: 'Muller-Trial'
+    font-style: normal
+    padding: 30px 28px
+    overflow: hidden
+    .contentInner
+        height: 100%
+        .cardWrapper
+            overflow: hidden
+            overflow-y: auto
+            height: 80%
+            &::-webkit-scrollbar
+                width: 0
+
+@media (max-width: 822.98px)
+    .contentWrapper
+        padding: 15px 23px

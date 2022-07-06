@@ -1,0 +1,119 @@
+.modal__inner
+    width: 526px
+    height: 540px
+    background: #FFFFFF
+    border: 1px solid #F1F1F1
+    border-radius: 20px
+    padding: 20px
+    position: relative
+    .modal__header
+        display: flex
+        justify-content: center
+        align-items: center
+        margin-bottom: 20px
+        .modalHeader__date
+            color: #ADADAD
+        img
+            cursor: pointer
+            position: absolute
+            top: 20px
+            right: 28px
+    .modal__content
+        display: flex
+        flex-direction: column
+        .modal__title
+            margin: 0 0 4px 10px
+        .modalInput__title
+            height: 40px
+            margin-bottom: 16px
+            background-color: inherit
+            outline: 0
+            border: 0
+            cursor: text
+            background: #F6F6F6
+            border-radius: 15px
+            padding: 10px
+            font-size: 20px
+            font-family: 'Muller-Trial'
+            font-style: normal
+            font-weight: 700
+            font-size: 20px
+            line-height: 27px
+        .modalInput__text
+            padding: 10px
+            outline: 0
+            border: 0
+            height: 318px
+            resize: none
+            cursor: text
+            background: #F6F6F6
+            font-family: 'Muller-Trial'
+            font-style: normal
+            font-weight: 400
+            font-size: 16px
+            line-height: 21px
+            &::-webkit-scrollbar
+                width: 12px
+                background-color: #F5F5F5
+                &::-webkit-scrollbar-thumb
+                    border-radius: 10px
+                    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1)
+                    background-color: #0d6efd
+                &::-webkit-input-placeholder
+                    text-align: center
+                    transform: translateY(130px)
+                    font-size: 20px
+                    font-family: 'Muller-Trial'
+                    font-style: normal
+                    font-weight: 400
+                    font-size: 20px
+                    line-height: 27px
+        .modalButton__wrapper
+            display: flex
+            justify-content: flex-end
+            margin-top: 20px
+            .modal__button
+                font-family: 'Muller-Trial'
+                font-style: normal
+                font-weight: 400
+                font-size: 16px
+                line-height: 21px
+                border-radius: 15px
+                cursor: pointer
+            .modalButton__dark
+                background: #000000
+                color: #fff
+                padding: 11px 33px
+            .modalButton__white
+                background: #DADADA
+                margin-right: 10px
+                padding: 11px 25px
+
+@media (max-width: 822.98px)
+    .modal__inner
+        width: 456px
+        height: 540px
+
+@media (max-width: 740px)
+    .modal__inner
+        width: 400px
+        height: 490px
+        .modal__content
+            .modalInput__text
+                height: 280px
+
+@media (max-width: 575.98px)
+    .modal__inner
+        width: 350px
+        height: 460px
+        .modal__content
+            .modalInput__text
+                height: 250px
+
+@media (max-width: 400px)
+    .modal__inner
+        width: 330px
+        height: 410px
+        .modal__content
+            .modalInput__text
+                height: 200px

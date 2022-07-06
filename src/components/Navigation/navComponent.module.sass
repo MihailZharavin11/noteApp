@@ -1,0 +1,106 @@
+.navigation
+    padding: 30px
+    display: flex
+    flex-direction: column
+    border-right: 1px solid #cfcfcf
+    overflow: hidden
+    .navigation__wrapper
+        overflow: hidden
+        overflow-y: auto
+        height: 70%
+        &::-webkit-scrollbar
+            width: 0
+    .navigation__title
+        font-family: 'Muller-Trial'
+        font-weight: 700
+        margin-bottom: 30px
+        font-size: 36px
+        line-height: 48px
+        text-align: center
+    .navigation__button
+        display: flex
+        justify-content: center
+        font-family: 'Muller-Trial'
+        font-style: normal
+        font-weight: 400
+        font-size: 16px
+        line-height: 21px
+        color: #ADADAD
+        cursor: pointer
+        &:hover *
+            color: #000
+            fill: #000
+            transition: all 0.5s ease
+        .navigationButton__img
+            margin-right: 12px
+    .navigationForm
+        display: flex
+        background: #EAEAEA
+        border-radius: 30px
+        justify-content: space-between
+        .navigationForm__image
+            margin: 0px 10px
+        .navigationForm__input
+            outline: none
+            border: none
+            background: transparent
+            font-family: 'Muller-Trial'
+            font-style: normal
+            font-weight: 400
+            font-size: 18px
+            line-height: 27px
+            width: 100%
+        .navigationForm__button
+            padding: 15px 20px
+            background: #000000
+            border-radius: 30px
+
+@media (max-width: 1199.98px)
+    .navigation
+        .navigationForm
+            .navigationForm__input
+                font-size: 15px
+            .navigationForm__button
+                padding: 0px 5px
+            .navigationForm__image
+                margin: 0px 0px
+
+@media (max-width: 822.98px)
+    .navigation
+        padding: 10px
+
+@media (max-width: 740px)
+    .navigation
+        .navigation__title
+            font-weight: 600
+            font-size: 28px
+            line-height: 30px
+        .navigationForm
+            .navigationForm__input
+                font-size: 15px
+            .navigationForm__button
+                padding: 0px 5px
+            .navigationForm__image
+                display: none
+
+@media (max-width: 575.98px)
+    .navigation
+        .navigation__title
+            font-size: 20px
+            line-height: 15px
+        .navigation__button
+            .navigationButton__img
+                display: none
+        .navigationForm
+            .navigationForm__input
+            .navigationForm__button
+                padding: 0px 5px
+            .navigationForm__image
+                display: none
+
+@media (max-width: 440px)
+    .navigation
+        .navigation__title
+            font-size: 15px
+            line-height: 10px
+            margin-bottom: 20px

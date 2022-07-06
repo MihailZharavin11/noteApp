@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": "7d25d9ac-59cb-4523-ad4b-045c97a2231e",
+      "title": "Hallo",
+      "text": "Wolrd",
+      "direction": "allnotes",
+      "date": "05.07.2022"
+    },
+    {
+      "id": "8d5eed47-3ccc-40d6-9b2f-04dc7d1fcc86",
+      "title": "SubTitle",
+      "text": "Check text\n",
+      "direction": "allnotes",
+      "date": "05.07.2022"
+    }
+  ],
+  "pages": [
+    {
+      "title": "All notes",
+      "id": 1
+    },
+    {
+      "id": "b0385568-c356-40ec-b099-052b5ad4b353",
+      "title": "asdasdasd"
+    },
+    {
+      "id": "c5f5ec06-c82b-4ce9-b304-5c8524c7d310",
+      "title": "asdasdasdasd"
+    },
+    {
+      "id": "d6ec20ed-97cd-48f7-ad1b-f9ae4f5af2b1",
+      "title": "Hallo World"
+    }
+  ]
+}
