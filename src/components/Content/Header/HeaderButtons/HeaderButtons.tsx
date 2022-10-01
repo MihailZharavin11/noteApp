@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import Createnotebutton from './CreateNoteButton/CreateNoteButton';
-import ClickAwayListener from 'react-click-away-listener';
-import EditSettings from './editSettings/EditSettings';
-import EditButton from './EditButton/EditButton';
-import styles from './headerButtons.module.sass';
+import React, { useState } from "react";
+import Createnotebutton from "./CreateNoteButton/CreateNoteButton";
+import ClickAwayListener from "react-click-away-listener";
+import EditSettings from "./editSettings/EditSettings";
+import EditButton from "./EditButton/EditButton";
 
 type HeaderbuttonsProps = {
   title: string;
@@ -17,7 +16,7 @@ type HeaderbuttonsProps = {
 
 const Headerbuttons: React.FC<HeaderbuttonsProps> = (props) => {
   const [showEditSettings, setEditSettings] = useState(false);
-  const mainPage: string = 'All notes';
+  const mainPage: string = "All notes";
 
   const {
     title,
@@ -32,14 +31,18 @@ const Headerbuttons: React.FC<HeaderbuttonsProps> = (props) => {
   return (
     <>
       {title !== mainPage ? (
-        <EditButton setEditSettings={setEditSettings} showEditSettings={showEditSettings} />
+        <EditButton
+          setEditSettings={setEditSettings}
+          showEditSettings={showEditSettings}
+        />
       ) : null}
       <Createnotebutton createNote={createNote} setCreateNote={setCreateNote} />
       {showEditSettings && (
         <ClickAwayListener
           onClickAway={() => {
             setEditSettings(!showEditSettings);
-          }}>
+          }}
+        >
           <>
             <EditSettings
               showEdditModalToDelete={showEdditModalToDelete}

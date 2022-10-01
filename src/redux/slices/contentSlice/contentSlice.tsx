@@ -5,18 +5,18 @@ import {
   createSlice,
   PayloadAction,
   Update,
-} from '@reduxjs/toolkit';
-import api from '../../../api';
-import { AppDispatch, RootState } from '../../store/store';
-import axios from 'axios';
-import { AxiosError } from 'axios';
+} from "@reduxjs/toolkit";
+import api from "../../../api";
+import { AppDispatch, RootState } from "../../store/store";
+import axios from "axios";
+import { AxiosError } from "axios";
 
 const contentAdapter = createEntityAdapter<INote>();
 
 enum LoadingStatus {
-  IDLE = 'idle',
-  LOADING = 'loading',
-  ERROR = 'error',
+  IDLE = "idle",
+  LOADING = "loading",
+  ERROR = "error",
 }
 
 type TContentSliceState = {
@@ -24,7 +24,14 @@ type TContentSliceState = {
   filterNotes: string;
   loadingStatusContent: LoadingStatus;
   title: string;
-  errorContent: null | TypeError | RangeError | EvalError | string | AxiosError | any;
+  errorContent:
+    | null
+    | TypeError
+    | RangeError
+    | EvalError
+    | string
+    | AxiosError
+    | any;
 };
 
 export interface INote {
@@ -40,10 +47,10 @@ interface ToUpdate {
 }
 
 const initialState = contentAdapter.getInitialState<TContentSliceState>({
-  filterURL: '',
-  filterNotes: 'Old first',
+  filterURL: "",
+  filterNotes: "Old first",
   loadingStatusContent: LoadingStatus.IDLE,
-  title: '',
+  title: "",
   errorContent: null,
 });
 
@@ -54,7 +61,7 @@ export const fetchContent = createAsyncThunk<
     dispatch: AppDispatch;
     rejectValue: TypeError | RangeError | EvalError | string | AxiosError | any;
   }
->('contentSlice/fetchContent', async (_, { dispatch, rejectWithValue }) => {
+>("contentSlice/fetchContent", async (_, { dispatch, rejectWithValue }) => {
   try {
     const allNotes: INote[] = await api.getAllNotes();
     dispatch(addAllNote(allNotes));
@@ -65,7 +72,7 @@ export const fetchContent = createAsyncThunk<
       rejectWithValue(e);
     } else if (e instanceof EvalError) {
       rejectWithValue(e);
-    } else if (typeof e === 'string') {
+    } else if (typeof e === "string") {
       rejectWithValue(e);
     } else if (axios.isAxiosError(e)) {
       rejectWithValue(e);
@@ -79,31 +86,34 @@ export const createNote = createAsyncThunk<
   void,
   { text: string; title: string; path: string },
   { dispatch: AppDispatch }
->('contentSlice/createNote', async ({ text, title, path }, { dispatch }) => {
+>("contentSlice/createNote", async ({ text, title, path }, { dispatch }) => {
   api.createNote(title, text, path).then((newNote) => {
     dispatch(addNote(newNote));
   });
 });
 
-export const deleteNote = createAsyncThunk<void, string, { dispatch: AppDispatch }>(
-  'contentSlice/deleteNote',
-  async (id, { dispatch }) => {
-    api.deleteNote(id).then(() => {
-      dispatch(removeNote(id));
-    });
-  },
-);
+export const deleteNote = createAsyncThunk<
+  void,
+  string,
+  { dispatch: AppDispatch }
+>("contentSlice/deleteNote", async (id, { dispatch }) => {
+  api.deleteNote(id).then(() => {
+    dispatch(removeNote(id));
+  });
+});
 
 export const changeNote = createAsyncThunk<
   void,
   { id: string; title: string; text: string; direction: string; date: string },
   { dispatch: AppDispatch }
->('contentSlice/changeNote', async ({ id, title, text, direction, date }, { dispatch }) => {
-  debugger;
-  api.changeNote(id, title, text, direction, date).then((newChangesNote) => {
-    dispatch(updateNote({ id, changes: newChangesNote }));
-  });
-});
+>(
+  "contentSlice/changeNote",
+  async ({ id, title, text, direction, date }, { dispatch }) => {
+    api.changeNote(id, title, text, direction, date).then((newChangesNote) => {
+      dispatch(updateNote({ id, changes: newChangesNote }));
+    });
+  }
+);
 
 const handlePandingStatus = (state: TContentSliceState) => {
   state.loadingStatusContent = LoadingStatus.LOADING;
@@ -116,14 +126,16 @@ const handeFullfilledStatus = (state: TContentSliceState) => {
 
 const handleRejectedStatus = (
   state: TContentSliceState,
-  action: PayloadAction<TypeError | RangeError | EvalError | string | AxiosError | any>,
+  action: PayloadAction<
+    TypeError | RangeError | EvalError | string | AxiosError | any
+  >
 ) => {
   state.loadingStatusContent = LoadingStatus.ERROR;
   state.errorContent = action.payload;
 };
 
 const contentSlice = createSlice({
-  name: 'noteSlice',
+  name: "noteSlice",
   initialState,
   reducers: {
     addAllNote: (state, action: PayloadAction<INote[]>) => {
@@ -170,17 +182,23 @@ const contentSlice = createSlice({
   },
 });
 
-export const { selectAll } = contentAdapter.getSelectors((state: RootState) => state.contentSlice);
+export const { selectAll } = contentAdapter.getSelectors(
+  (state: RootState) => state.contentSlice
+);
 
 const filterByValue = (notes: INote[], filter: string) => {
   switch (filter) {
-    case 'A-Z':
-      return notes.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1));
-    case 'Z-A':
-      return notes.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase() ? -1 : 1));
-    case 'New first':
+    case "A-Z":
+      return notes.sort((a, b) =>
+        a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
+      );
+    case "Z-A":
+      return notes.sort((a, b) =>
+        a.title.toLowerCase() > b.title.toLowerCase() ? -1 : 1
+      );
+    case "New first":
       return notes.sort((a, b) => (Number(a.date) - Number(b.date) ? 1 : -1));
-    case 'Old first':
+    case "Old first":
       return notes.sort((a, b) => (Number(a.date) - Number(b.date) ? -1 : 1));
     default:
       return notes;
@@ -192,13 +210,15 @@ export const selector = createSelector(
   (state: RootState) => state.contentSlice.filterNotes,
   selectAll,
   (filterURL: string, filterNotes: string, notes: INote[]) => {
-    if (filterURL === 'allnotes' || !filterURL) {
+    if (filterURL === "allnotes" || !filterURL) {
       return filterByValue(notes, filterNotes);
     } else {
-      let notesByDirection = notes.filter((item) => item.direction === filterURL);
+      let notesByDirection = notes.filter(
+        (item) => item.direction === filterURL
+      );
       return filterByValue(notesByDirection, filterNotes);
     }
-  },
+  }
 );
 
 const { reducer, actions } = contentSlice;
