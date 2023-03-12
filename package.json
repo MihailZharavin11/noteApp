@@ -29,7 +29,6 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "pusk": "concurrently \"npm run server\" \"npm start\"",
     "start":"react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
